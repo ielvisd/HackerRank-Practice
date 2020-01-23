@@ -70,68 +70,31 @@ function countingValleys(n, s) {
       currentElevation += 1;
     }
 
-    if (i === 0) {
-      console.log(i);
-      console.log(currentElevation);
-      console.log(s[i]);
-    }
-
     // Check if you came from the start of a valley
     // If current elevation is 0 and you are at the starting position or a previous one
     if (
-      currentElevation === (-1 || 1) &&
-      ((i === 0 && s[i] === "D") || (s[i - 1] && s[i + 1] && s[i + 1] === "D"))
+      (currentElevation === -1 &&
+        ((i === 0 && s[i] === "D") ||
+          (s[i - 1] && s[i + 1] && s[i + 1] === "D"))) ||
+      (currentElevation === 0 && s[i] === "U")
     ) {
-      console.log(i);
-      console.log(currentElevation);
       startValley = true;
-    }
-
-    if (i === 2) {
-      console.log(startValley);
-    }
-
-    if (i === 3) {
-      console.log(startValley);
-    }
-
-    if (i === 9) {
-      console.log(currentElevation);
     }
 
     // Check if you are at the end of a valley
     // If you coming from below sea level & are now at 0
     if (startValley === true && i !== 0 && currentElevation === 0) {
-      console.log(currentElevation);
-      // Increase numberOfValleys by 1
-      console.log(s[i]);
-      console.log(i);
       startValley = false;
       numberOfValleys += 1;
-      console.log("End of Valley");
     }
-
-    // If at end of list check one more time (edge case)
-    // if (
-    //   i === n - 1 &&
-    //   this.startValley === true &&
-    //   i !== 0 &&
-    //   currentElevation >= 0
-    // ) {
-    //   console.log(i);
-    //   startValley = false;
-    //   numberOfValleys += 1;
-    // }
   }
-
-  console.log(numberOfValleys);
   return numberOfValleys;
 }
 
-// 1, 2, 0, 2
+// 1, 2, 0, 2, 2
 
-// console.log(countingValleys(n1, s1));
-// console.log(countingValleys(n2, s2));
-// console.log(countingValleys(n3, s3));
-// console.log(countingValleys(n4, s4));
+console.log(countingValleys(n1, s1));
+console.log(countingValleys(n2, s2));
+console.log(countingValleys(n3, s3));
+console.log(countingValleys(n4, s4));
 console.log(countingValleys(n5, s5));
